@@ -19,7 +19,7 @@
 		<int:header-enricher>
 			<int:header name="jms_replyTo" ref="replyQueue" />
 		</int:header-enricher>
-		<int:filter expression="payload.contains('JMS')" />
+		<int:filter expression="payload.contains('mess')" />
 		<int-jms:outbound-channel-adapter destination="requestTopic" />
 	</int:chain>
 

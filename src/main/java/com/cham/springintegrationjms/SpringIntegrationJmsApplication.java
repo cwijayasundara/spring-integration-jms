@@ -23,7 +23,21 @@ public class SpringIntegrationJmsApplication  implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
 		final MessageChannel stdinToJmsOutChannel = appContext.getBean("stdinToJmsOutChannel", MessageChannel.class);
-		stdinToJmsOutChannel.send(MessageBuilder.withPayload("JMS message").build());
-		stdinToJmsOutChannel.send(MessageBuilder.withPayload("kafka message").build());
+		String firstMsg = "<note>\n" +
+				"<to>Tom</to>\n" +
+				"<from>Phil</from>\n" +
+				"<heading>Reminder</heading>\n" +
+				"<body>Don't forget me this weekend!</body>\n" +
+				"</note>";
+
+		String secondMsg = "<note>\n" +
+				"<to>Chaminda</to>\n" +
+				"<from>Boo</from>\n" +
+				"<heading>Warning</heading>\n" +
+				"<body>Don't mess with me!</body>\n" +
+				"</note>";
+
+		stdinToJmsOutChannel.send(MessageBuilder.withPayload(firstMsg).build());
+		stdinToJmsOutChannel.send(MessageBuilder.withPayload(secondMsg).build());
 	}
 }
