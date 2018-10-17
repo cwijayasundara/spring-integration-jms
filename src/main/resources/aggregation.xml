@@ -48,24 +48,17 @@
 
 	<int:transformer input-channel="upcase" expression="payload.toUpperCase()" />
 
-
-
 	<!-- Profiles -->
 
 	<beans profile="default">
-
 		<int-stream:stdout-channel-adapter id="out" append-newline="true"/>
-
 	</beans>
 
 	<beans profile="testCase">
-
 		<int:bridge input-channel="out" output-channel="queueChannel"/>
-
 		<int:channel id="queueChannel">
 			<int:queue />
 		</int:channel>
-
 	</beans>
 
 </beans>
