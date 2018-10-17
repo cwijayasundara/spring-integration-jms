@@ -20,10 +20,11 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 
 @MessageEndpoint
-public class DemoBean {
+public class MessageTransformer {
 
 	@ServiceActivator
 	public String upperCase(String input) {
+		System.out.println("Inside the message converter ..");
 		return "JMS response: " + input.toUpperCase();
 	}
 }

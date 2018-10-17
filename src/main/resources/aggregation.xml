@@ -23,8 +23,9 @@
 		<int-jms:outbound-channel-adapter destination="requestTopic" />
 	</int:chain>
 
-	<int-jms:message-driven-channel-adapter channel="jmsReplyChannel"
-		destination="replyQueue"/>
+	<int-jms:inbound-channel-adapter channel="jmsReplyChannel" destination="replyQueue">
+		<int:poller fixed-delay="500" />
+	</int-jms:inbound-channel-adapter>
 
 	<int:channel id="jmsReplyChannel" />
 
@@ -42,7 +43,7 @@
 
 	<!-- Subscribers -->
 
-	<int-jms:inbound-gateway request-channel="upcase" request-destination="requestTopic" />
+	<int-jms:inbound-gateway request-channel="upcase" request-destination="requestTopic"/>
 
 	<!-- int-jms:inbound-gateway request-channel="upcase" request-destination="requestTopic" / -->
 

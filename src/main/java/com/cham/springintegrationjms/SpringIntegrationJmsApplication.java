@@ -10,7 +10,8 @@ import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.MessageChannel;
 
 @SpringBootApplication
-@ImportResource({"common.xml", "aggregation.xml"})
+//@ImportResource({"common.xml", "aggregation.xml"})
+@ImportResource({"common-websphere.xml", "aggregation.xml"})
 public class SpringIntegrationJmsApplication  implements CommandLineRunner {
 
 	@Autowired
